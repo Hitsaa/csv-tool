@@ -30,11 +30,11 @@
             <tr *ngFor="let header of headers; let i = index">
               <td scope="row">{{ i + 1 }}</td>
               <td>{{ header }}</td>
-              <td><input type="text" class="form form-control" /></td>
+              <td><input type="text" class="form form-control" [(ngModel)]="jsonKeyValues[header]" name="jsonKeyValues" /></td>
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> 
       <div class="mt-5">
         <b>Enter Extra fields to be added in Json</b>
         <table class="table table-size">
@@ -94,6 +94,20 @@
           </tbody>
         </table>
         <button class="btn btn-primary" (click)="addJsonKey(); $event.preventDefault()">Add New Item</button>
+      </div>
+      <div class="mt-5">
+        
+        <div class="input-group">
+          <span class="pe-1">Output File Name:</span>
+          <div class="pe-1">
+            <input
+            type="text"
+            class="form-control"
+            id="fileOutput"
+            (change)="onOutputFileNameSelected($event)"/>  
+          </div>
+          <button class="btn btn-outline-secondary" (click)="onDownload(); $event.preventDefault()">Download JSON</button>  
+          </div>
       </div>
     </div>
   </form>
