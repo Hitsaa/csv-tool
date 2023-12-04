@@ -34,7 +34,7 @@
             </tr>
           </tbody>
         </table>
-      </div> 
+      </div>
       <div class="mt-5">
         <b>Enter Extra fields to be added in Json</b>
         <table class="table table-size">
@@ -96,7 +96,7 @@
         <button class="btn btn-primary" (click)="addJsonKey(); $event.preventDefault()">Add New Item</button>
       </div>
       <div class="mt-5">
-        
+
         <div class="input-group">
           <span class="pe-1">Output File Name:</span>
           <div class="pe-1">
@@ -104,9 +104,15 @@
             type="text"
             class="form-control"
             id="fileOutput"
-            (change)="onOutputFileNameSelected($event)"/>  
+            (change)="onOutputFileNameSelected($event)"/>
           </div>
-          <button class="btn btn-outline-secondary" (click)="onDownload(); $event.preventDefault()">Download JSON</button>  
+          <div class="pe-1">
+            <app-dropdown
+            [items]="fileExtensions"
+            [btnName]="'Select File Extension'"
+            (selectedItem)="selectFileExtension($event)"></app-dropdown>
+          </div>
+          <button class="btn btn-outline-secondary btn-height-fit-content" (click)="onDownload(); $event.preventDefault()">Download JSON</button>
           </div>
       </div>
     </div>

@@ -13,6 +13,12 @@ export const DIRECTION = {
   decremental: 'DECREMENTAL'
 }
 
+export const FILE_EXTENSIONS = {
+  json: '.json',
+  // xls: '.xls',
+  // xlsx: '.xlsx'
+}
+
 export interface JsonKeys {
   keyName: string;
   type: string;  // string/number

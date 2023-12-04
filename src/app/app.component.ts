@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploadService } from './file-upload.service';
-import { COLUMN_NAMES, DIRECTION, JsonKeys, KEY_TYPES } from './JsonKeys';
+import { COLUMN_NAMES, DIRECTION, FILE_EXTENSIONS, JsonKeys, KEY_TYPES } from './JsonKeys';
 
 @Component({
   selector: 'app-root',
@@ -18,13 +18,15 @@ export class AppComponent implements OnInit{
   directions = Object.values(DIRECTION);
   jsonKeyValues: { [key: string]: string } = {};
   extraJsonArray: any[] = [];
+  selectedFileExtension: string = '.json';
+  fileExtensions = Object.keys(FILE_EXTENSIONS);
   data = {
     fileName: this.selectedFile?.name,
     jsonFileName: this.selectedOutputFileName,
     jsonKeysMap: this.jsonKeyValues,
     staticFields: this.extraJsonArray
   };
-  
+
 
   constructor(private fileUploadService: FileUploadService) {}
 
@@ -116,7 +118,7 @@ export class AppComponent implements OnInit{
           const blob = new Blob([fileData], { type: 'application/octet-stream' });
           const link = document.createElement('a');
           link.href = window.URL.createObjectURL(blob);
-          link.download = this.selectedOutputFileName;
+          link.download = this.selectedOutputFileName+this.selectedFileExtension;
           link.click();
         },
         error => {
@@ -143,5 +145,9 @@ export class AppComponent implements OnInit{
         })
       }
     }
+  }
+
+  selectFileExtension(event: any) {
+    this.selectedFileExtension = Object.entries(FILE_EXTENSIONS).find(([key, value]) => key === event)?.[1] || '.json';
   }
 }
