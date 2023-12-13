@@ -45,6 +45,12 @@ export class AppComponent implements OnInit{
     this.selectedOutputFileName = inputElement.value;
   }
 
+  testLogin() {
+    this.fileUploadService.testlogin().subscribe((val) => {
+      console.log(val);
+    })
+  }
+
   onUpload(event: Event): void {
     event?.preventDefault();
     if (this.selectedFile) {

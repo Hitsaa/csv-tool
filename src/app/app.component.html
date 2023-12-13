@@ -16,6 +16,16 @@
         Upload
       </button>
     </div>
+    <div>
+      <button
+        class="btn btn-primary"
+        type="button"
+        id="fileUpload"
+        (click)="testLogin();$event.preventDefault();"
+      >
+      test login
+      </button>
+    </div>
     <div *ngIf="headers.length" class="mt-5">
       <div>
         <table class="table table-size">

@@ -10,14 +10,15 @@ import { environment } from 'src/environments/environment';
 })
 export class FileUploadService {
   private uploadApiUrl = environment.apiUrl+'/api/v1'; // Update this with your server's API endpoint
-  private downloadApiUrl = 'https://localhost:8080/api/v1/process/csv'; 
+  private authApiUrl = 'http://localhost:8090/api/v1';
 
   constructor(private http: HttpClient) { }
 
   uploadFile(file: File): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    return this.http.post(this.uploadApiUrl+'/upload/csv', formData);
+    return this.http.post(this.authApiUrl+'/upload', formData);
+    // return this.http.post(this.uploadApiUrl+'/upload/csv', formData);
   }
 
   getData(): Observable<any> {
@@ -33,5 +34,9 @@ export class FileUploadService {
       headers,
       responseType: 'blob' as 'json' // Set responseType to 'blob' for binary data
     });
+  }
+
+  testlogin() {
+    return this.http.get(this.authApiUrl + '/login');
   }
 }
