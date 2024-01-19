@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { FormsModule } from '@angular/forms';
+import { CsvComponent } from './csv/csv.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DropdownComponent
+    DropdownComponent,
+    CsvComponent
   ],
   imports: [
     BrowserModule,
